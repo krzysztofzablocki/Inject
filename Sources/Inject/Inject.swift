@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import SwiftUI
 
 /// Common protocol interface for classes that support observing injection events
 /// This is automatically added to all NSObject subclasses like `ViewController`s or `Window`s
@@ -56,10 +57,7 @@ private var injectionObservationKey = arc4random()
 public extension InjectListener where Self: NSObject {
     func onInjection(callback: @escaping (Self) -> Void) {
         let observation = injectionObserver.objectWillChange.sink(receiveValue: { [weak self] in
-            guard let self = self else {
-                return
-            }
-
+            guard let self = self else { return }
             callback(self)
         })
 
