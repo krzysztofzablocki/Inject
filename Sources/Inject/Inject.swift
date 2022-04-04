@@ -35,7 +35,7 @@ private var loadInjectionImplementation: Void = {
     let bundleName = "iOSInjection.bundle"
 #else
     let bundleName = "maciOSInjection.bundle"
-#endif
+#endif // OS and environment conditions
     Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName)?.load()
 }()
 
@@ -70,8 +70,8 @@ public class InjectionObserver: ObservableObject {}
 private let injectionObserver = InjectionObserver()
 private var loadInjectionImplementation: Void = {}()
 
-public extension InjectionListener where Self: NSObject {
+public extension InjectListener where Self: NSObject {
     @inlinable @inline(__always)
     func onInjection(callback: @escaping (Self) -> Void) {}
 }
-#endif
+#endif // DEBUG
