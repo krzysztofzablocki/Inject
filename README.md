@@ -1,7 +1,7 @@
 # Inject
 Hot reloading workflow helper that enables you to save hours of time each week, regardless if you are using `UIKit`, `AppKit` or `SwiftUI`.
 
-[Read detailed article about this](https://merowing.info/2022/03/hot-reloading-in-swift/)
+[Read detailed article about this](https://merowing.info/2022/04/hot-reloading-in-swift/)
 
 The heavy lifting is done by the amazing [InjectionForXcode](https://github.com/johnno1962/InjectionIII). This library is just a think wrapper to provide the best developer experience possible while requiring minimum effort. 
 
