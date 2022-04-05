@@ -71,6 +71,12 @@ Just 2 steps to enable injection in your `SwiftUI` Views
 
 > *Remember you **don't need** to remove this code when you are done, it's NO-OP in production builds.*
 
+If you want to see your changes in action, you can enable an optional `Animation` variable on `Inject.animation` that will be used when ever new source code is injected into your application.
+
+```swift
+Inject.animation = .interactiveSpring()
+```
+
 ####  **UIKit / AppKit**
 For standard imperative UI frameworks we need a way to clean-up state between code injection phases. 
 

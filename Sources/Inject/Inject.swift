@@ -15,6 +15,7 @@ public protocol InjectListener {
 public enum Inject {
     public static let observer = injectionObserver
     public static let load: Void = loadInjectionImplementation
+    public static var animation: SwiftUI.Animation?
 }
 
 public extension InjectListener {
@@ -46,7 +47,13 @@ public class InjectionObserver: ObservableObject {
     fileprivate init() {
         cancellable = NotificationCenter.default.publisher(for: Notification.Name("INJECTION_BUNDLE_NOTIFICATION"))
             .sink { [weak self] _ in
-                self?.injectionNumber += 1
+                if let animation = Inject.animation {
+                    withAnimation(animation) {
+                        self?.injectionNumber += 1
+                    }
+                } else {
+                    self?.injectionNumber += 1
+                }
             }
     }
 }
