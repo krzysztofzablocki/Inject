@@ -1,11 +1,11 @@
-#if canImport(AppKit)
-import AppKit
-public typealias InjectViewControllerType = NSViewController
-public typealias InjectViewType = NSView
-#elseif canImport(UIKit)
+#if canImport(UIKit)
 import UIKit
 public typealias InjectViewControllerType = UIViewController
 public typealias InjectViewType = UIView
+#elseif canImport(AppKit)
+import AppKit
+public typealias InjectViewControllerType = NSViewController
+public typealias InjectViewType = NSView
 #endif
 
 #if DEBUG
