@@ -4,7 +4,7 @@ Hot reloading workflow helper that enables you to save hours of time each week, 
 **TLDR: A single line of code** change allows you to live code `UIKit` screen:
 
 
-https://user-images.githubusercontent.com/1468993/161741052-ae6fe4df-a5a7-4f9d-9c06-b44c7a49b846.mp4
+https://user-images.githubusercontent.com/26660989/161756368-b150bc25-b66f-4822-86ee-2e4aed713932.mp4
 
 
 
