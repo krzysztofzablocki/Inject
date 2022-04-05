@@ -44,7 +44,7 @@ dependencies: [
     .package(
       name: "Inject",
       url: "https://github.com/krzysztofzablocki/Inject.git",
-      from: "1.0.0"
+      from: "1.0.2"
     )
 ]
 ```
