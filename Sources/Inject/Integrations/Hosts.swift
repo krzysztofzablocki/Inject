@@ -60,6 +60,13 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         view.addSubview(instance.view)
 #if canImport(UIKit)
         instance.didMove(toParent: self)
+        
+        title = instance.title
+        navigationItem.titleView = instance.navigationItem.titleView
+        navigationItem.backButtonTitle = instance.navigationItem.backButtonTitle
+        navigationItem.backBarButtonItem = instance.navigationItem.backBarButtonItem
+        navigationItem.leftBarButtonItems = instance.navigationItem.leftBarButtonItems
+        navigationItem.rightBarButtonItems = instance.navigationItem.rightBarButtonItems
 #endif
         
         instance.view.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +74,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
             instance.view.topAnchor.constraint(equalTo: view.topAnchor),
             instance.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             instance.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            instance.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            instance.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         .forEach { $0.isActive = true }
     }
@@ -125,7 +132,7 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
             instance.topAnchor.constraint(equalTo: topAnchor),
             instance.leadingAnchor.constraint(equalTo: leadingAnchor),
             instance.bottomAnchor.constraint(equalTo: bottomAnchor),
-            instance.trailingAnchor.constraint(equalTo: trailingAnchor),
+            instance.trailingAnchor.constraint(equalTo: trailingAnchor)
         ]
         .forEach { $0.isActive = true }
     }
