@@ -144,5 +144,15 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
         instance[keyPath: keyPath]
     }
 }
+#else
+
+extension Inject {
+    public static func ViewControllerHost(_ viewController: InjectViewControllerType) -> InjectViewControllerType {
+        viewController
+    }
+    public static func ViewHost(_ view: InjectViewType) -> InjectViewType {
+        view
+    }
+}
 
 #endif
