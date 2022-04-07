@@ -104,6 +104,17 @@ paneA = Inject.ViewHost(
 
 That is all the changes you need to do, your app now allows you to change anything in `PaneAView` except for its initialiser API and the changes will be almost immediately reflected in your App.
 
+Make sure to call initializer inside `Inject.ViewControllerHost(...)` or `Inject.ViewHost(...)`. Inject relies on `@autoclosure` to reload views when hot-reload happens. Example:
+```swift
+// WRONG
+let viewController = YourViewController()
+rootViewController.pushViewController(Inject.ViewControllerHost(viewController), animated: true)
+
+// CORRECT
+let viewController = Inject.ViewControllerHost(YourViewController())
+rootViewController.pushViewController(viewController, animated: true)
+```
+
 > *Remember you **don't need** to remove this code when you are done, it's NO-OP in production builds.*
 
 #### The Composable Architecture
