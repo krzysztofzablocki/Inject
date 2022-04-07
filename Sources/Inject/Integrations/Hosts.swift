@@ -62,11 +62,13 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         instance.didMove(toParent: self)
         
         title = instance.title
+        #if !os(tvOS)
         navigationItem.titleView = instance.navigationItem.titleView
         navigationItem.backButtonTitle = instance.navigationItem.backButtonTitle
         navigationItem.backBarButtonItem = instance.navigationItem.backBarButtonItem
         navigationItem.leftBarButtonItems = instance.navigationItem.leftBarButtonItems
         navigationItem.rightBarButtonItems = instance.navigationItem.rightBarButtonItems
+        #endif
 #endif
         
         instance.view.translatesAutoresizingMaskIntoConstraints = false
