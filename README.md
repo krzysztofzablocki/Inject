@@ -84,6 +84,8 @@ If you want to see your changes in action, you can enable an optional `Animation
 Inject.animation = .interactiveSpring()
 ```
 
+Using `Inject` is demoed in this [example app](https://github.com/MarcoEidinger/InjectSwiftUIExample) 
+
 ####  **UIKit / AppKit**
 For standard imperative UI frameworks we need a way to clean-up state between code injection phases. 
 
