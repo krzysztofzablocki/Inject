@@ -7,7 +7,7 @@ let package = Package(
     name: "Inject",
     platforms: [
             .macOS(.v10_15),
-            .iOS(.v13),
+            .iOS(.v11),
             .tvOS(.v13)
         ],
     products: [
