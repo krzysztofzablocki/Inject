@@ -68,6 +68,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         navigationItem.backBarButtonItem = instance.navigationItem.backBarButtonItem
         navigationItem.leftBarButtonItems = instance.navigationItem.leftBarButtonItems
         navigationItem.rightBarButtonItems = instance.navigationItem.rightBarButtonItems
+        navigationItem.largeTitleDisplayMode = instance.navigationItem.largeTitleDisplayMode
         #endif
 #endif
         
