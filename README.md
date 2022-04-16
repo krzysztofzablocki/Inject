@@ -73,8 +73,8 @@ You can either add `import Inject` in individual files in your project or use
 #### **SwiftUI**
 Just 2 steps to enable injection in your `SwiftUI` Views
 
-- Add `@ObservedObject private var iO = Inject.observer` variable
 - call `.enableInjection()` at the end of your body definition
+- add `@ObserveInjection var inject` to your view struct
 
 > *Remember you **don't need** to remove this code when you are done, it's NO-OP in production builds.*
 
