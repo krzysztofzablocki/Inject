@@ -4,7 +4,10 @@ import SwiftUI
 #if DEBUG
 public extension SwiftUI.View {
     func enableInjection() -> some SwiftUI.View {
-        AnyView(self)
+        _ = Inject.load
+        // Use AnyView in case the underlying view structure changes during injection.
+        // This is only in effect in debug builds.
+        return AnyView(self)
     }
     
     func onInjection(callback: @escaping (Self) -> Void) -> some SwiftUI.View {
@@ -18,9 +21,7 @@ public extension SwiftUI.View {
 @propertyWrapper
 public struct ObserveInjection: DynamicProperty {
     @ObservedObject private var iO = Inject.observer
-    public init() {
-        _ = Inject.load
-    }
+    public init() {}
     public private(set) var wrappedValue: Inject.Type = Inject.self
 }
 
