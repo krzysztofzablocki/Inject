@@ -19,14 +19,27 @@ public extension SwiftUI.View {
     }
 }
 
+@propertyWrapper
+public struct ObserveInjection: DynamicProperty {
+    @ObservedObject private var iO = Inject.observer
+    public init() {}
+    public private(set) var wrappedValue: Inject.Type = Inject.self
+}
+
 #else
 public extension SwiftUI.View {
     @inlinable @inline(__always)
     func enableInjection() -> Self { self }
 
     @inlinable @inline(__always)
-    func onInjection(callback: @escaping (Self) -> Void) -> some SwiftUI.View {
+    func onInjection(callback: @escaping (Self) -> Void) -> Self {
         self
     }
+}
+
+@propertyWrapper
+public struct ObserveInjection {
+    public init() {}
+    public private(set) var wrappedValue: Inject.Type = Inject.self
 }
 #endif
