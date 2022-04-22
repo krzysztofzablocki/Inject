@@ -30,7 +30,6 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         self.constructor = constructor
         
         super.init(nibName: nil, bundle: nil)
-        self.enableInjection()
         
         addAsChild()
         onInjection { instance in
@@ -112,7 +111,6 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
         self.constructor = constructor
         
         super.init(frame: .zero)
-        self.enableInjection()
         addAsChild()
         onInjection { instance in
             instance.resetHosted()

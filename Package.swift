@@ -13,14 +13,24 @@ let package = Package(
     products: [
         .library(
             name: "Inject",
-            targets: ["Inject"]),
+            targets: ["Inject", "InjectAutoLoader"]
+        )
     ],
     
-    dependencies: [
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Inject",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/Inject/"
+        ),
+        .target(
+           name: "InjectAutoLoader",
+           dependencies: ["Inject"],
+           path: "Sources/InjectAutoLoader/",
+           cSettings: [
+              .headerSearchPath("Internal"),
+           ]
+        )
     ]
 )

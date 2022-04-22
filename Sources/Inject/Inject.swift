@@ -7,22 +7,19 @@ import SwiftUI
 public protocol InjectListener {
     associatedtype InjectInstanceType = Self
 
-    func enableInjection()
     func onInjection(callback: @escaping (InjectInstanceType) -> Void) -> Void
 }
 
 /// Public namespace for using Inject API
 public enum Inject {
     public static let observer = injectionObserver
-    public static let load: Void = loadInjectionImplementation
     public static var animation: SwiftUI.Animation?
 }
 
-public extension InjectListener {
-    /// Ensures injection is enabled
-    @inlinable @inline(__always)
-    func enableInjection() {
-        _ = Inject.load
+/// Class for internal usage to automatically load Inject
+@objc public class SwiftInjectAutoLoader: NSObject {
+    @objc public static func loadInject() {
+        _ = loadInjectionImplementation
     }
 }
 
