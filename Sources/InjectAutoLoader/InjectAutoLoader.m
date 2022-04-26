@@ -1,10 +1,3 @@
-//
-//  InjectAutoLoader.m
-//  
-//
-//  Created by Wojciech Kulik on 22/04/2022.
-//
-
 #import <Foundation/Foundation.h>
 
 @import Inject;

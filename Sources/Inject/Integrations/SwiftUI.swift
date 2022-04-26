@@ -13,6 +13,7 @@ public extension SwiftUI.View {
         onReceive(Inject.observer.objectWillChange, perform: {
             callback(self)
         })
+        .enableInjection()
     }
 }
 
