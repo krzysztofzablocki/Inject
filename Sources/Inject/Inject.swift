@@ -13,8 +13,10 @@ public protocol InjectListener {
 
 /// Public namespace for using Inject API
 public enum Inject {
+    @available(iOS 13.0, *)
     public static let observer = injectionObserver
     public static let load: Void = loadInjectionImplementation
+    @available(iOS 13.0, *)
     public static var animation: SwiftUI.Animation?
 }
 
@@ -43,6 +45,7 @@ private var loadInjectionImplementation: Void = {
     Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName)?.load()
 }()
 
+@available(iOS 13.0, *)
 public class InjectionObserver: ObservableObject {
     @Published public private(set) var injectionNumber = 0
     private var cancellable: AnyCancellable?
@@ -61,11 +64,16 @@ public class InjectionObserver: ObservableObject {
     }
 }
 
+@available(iOS 13.0, *)
 private let injectionObserver = InjectionObserver()
+@available(iOS 13.0, *)
 private var injectionObservationKey = arc4random()
 
 public extension InjectListener where Self: NSObject {
     func onInjection(callback: @escaping (Self) -> Void) {
+        guard #available(iOS 13.0, *) else {
+            return
+        }
         let observation = injectionObserver.objectWillChange.sink(receiveValue: { [weak self] in
             guard let self = self else { return }
             callback(self)
@@ -76,7 +84,9 @@ public extension InjectListener where Self: NSObject {
 }
 
 #else
+@available(iOS 13.0, *)
 public class InjectionObserver: ObservableObject {}
+@available(iOS 13.0, *)
 private let injectionObserver = InjectionObserver()
 private var loadInjectionImplementation: Void = {}()
 
