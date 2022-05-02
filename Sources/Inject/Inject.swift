@@ -14,6 +14,9 @@ public protocol InjectListener {
 public enum Inject {
     public static let observer = injectionObserver
     public static var animation: SwiftUI.Animation?
+    
+    @available(*, deprecated, message: "You can now remove this call. It happens automatically when the app starts. This method will be removed in the future.")
+    public static let load: Void = loadInjectionImplementation
 }
 
 /// Class for internal usage to automatically load Inject
