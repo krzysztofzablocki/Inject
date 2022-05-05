@@ -63,6 +63,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         
         title = instance.title
         #if !os(tvOS)
+        navigationItem.title = instance.navigationItem.title
         navigationItem.titleView = instance.navigationItem.titleView
         navigationItem.backButtonTitle = instance.navigationItem.backButtonTitle
         navigationItem.backBarButtonItem = instance.navigationItem.backBarButtonItem
