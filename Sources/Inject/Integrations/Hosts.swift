@@ -62,6 +62,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         instance.didMove(toParent: self)
         
         title = instance.title
+        tabBarItem = instance.tabBarItem
         #if !os(tvOS)
         navigationItem.title = instance.navigationItem.title
         navigationItem.titleView = instance.navigationItem.titleView
