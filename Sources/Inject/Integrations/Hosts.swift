@@ -71,6 +71,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
         navigationItem.leftBarButtonItems = instance.navigationItem.leftBarButtonItems
         navigationItem.rightBarButtonItems = instance.navigationItem.rightBarButtonItems
         navigationItem.largeTitleDisplayMode = instance.navigationItem.largeTitleDisplayMode
+        toolbarItems = instance.toolbarItems
         self.hidesBottomBarWhenPushed = instance.hidesBottomBarWhenPushed
         #endif
 #endif
