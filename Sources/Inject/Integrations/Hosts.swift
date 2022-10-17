@@ -161,10 +161,10 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
 #else
 
 extension Inject {
-    public static func ViewControllerHost(_ viewController: InjectViewControllerType) -> InjectViewControllerType {
+    public static func ViewControllerHost<Hosted: InjectViewControllerType>(_ viewController: Hosted) -> Hosted {
         viewController
     }
-    public static func ViewHost(_ view: InjectViewType) -> InjectViewType {
+    public static func ViewHost<Hosted: InjectViewType>(_ view: Hosted) -> Hosted {
         view
     }
 }
