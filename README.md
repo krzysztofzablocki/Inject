@@ -48,6 +48,13 @@ dependencies: [
     )
 ]
 ```
+
+### via Cocoapods Podfile
+
+```ruby
+pod 'Inject'
+```
+
 ### Individual Developer setup (once per machine)
 If anyone in your project wants to use injection, they only need to:
 
