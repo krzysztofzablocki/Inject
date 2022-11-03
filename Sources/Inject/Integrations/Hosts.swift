@@ -21,7 +21,7 @@ extension Inject {
 /// `let myView = Inject.ViewControllerHost(TestViewController())`
 /// And within the parent view, you should add the view above.
 @dynamicMemberLookup
-public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: InjectViewControllerType {
+open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: InjectViewControllerType {
     public private(set) var instance: Hosted
     let constructor: () -> Hosted
     
@@ -87,7 +87,7 @@ public class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: In
     }
     
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
