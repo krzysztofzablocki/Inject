@@ -63,6 +63,8 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         
         title = instance.title
         tabBarItem = instance.tabBarItem
+        definesPresentationContext = instance.definesPresentationContext
+        modalPresentationStyle = instance.modalPresentationStyle
         #if !os(tvOS)
         navigationItem.title = instance.navigationItem.title
         navigationItem.titleView = instance.navigationItem.titleView
@@ -71,8 +73,10 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         navigationItem.leftBarButtonItems = instance.navigationItem.leftBarButtonItems
         navigationItem.rightBarButtonItems = instance.navigationItem.rightBarButtonItems
         navigationItem.largeTitleDisplayMode = instance.navigationItem.largeTitleDisplayMode
+        navigationItem.searchController = instance.navigationItem.searchController
+        navigationItem.hidesSearchBarWhenScrolling = instance.navigationItem.hidesSearchBarWhenScrolling
         toolbarItems = instance.toolbarItems
-        self.hidesBottomBarWhenPushed = instance.hidesBottomBarWhenPushed
+        hidesBottomBarWhenPushed = instance.hidesBottomBarWhenPushed
         #endif
 #endif
         
