@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = "Inject"
+  s.name = "InjectHotReload"
   s.version = "1.2.2"
   s.summary = "Hot Reloading for Swift applications! "
 
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "10.15"
-  s.tvos.deployment_target = "13.0"
+  s.tvos.deployment_target = "16.0"
 
   s.swift_version = "5.0"
 

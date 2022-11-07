@@ -52,7 +52,7 @@ dependencies: [
 ### via Cocoapods Podfile
 
 ```ruby
-pod 'Inject'
+pod 'InjectHotReload'
 ```
 
 ### Individual Developer setup (once per machine)
