@@ -95,6 +95,10 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         fatalError("init(coder:) has not been implemented")
     }
     
+    override open var childForStatusBarStyle: UIViewController? {
+        instance
+    }
+    
     public subscript<T>(dynamicMember keyPath: WritableKeyPath<Hosted, T>) -> T {
         get { instance[keyPath: keyPath] }
         set { instance[keyPath: keyPath] = newValue }
