@@ -170,10 +170,21 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
 }
 #else
 
+#if canImport(UIKit)
+extension InjectViewControllerType: Inject {
+
+    public static func loadFromNib<T: InjectViewControllerType>() -> T {
+        ViewControllerHost(T(nibName: "\(self)", bundle: nil)) as! T
+    }
+}
+#endif
+
 extension Inject {
+
     public static func ViewControllerHost<Hosted: InjectViewControllerType>(_ viewController: Hosted) -> Hosted {
         viewController
     }
+
     public static func ViewHost<Hosted: InjectViewType>(_ view: Hosted) -> Hosted {
         view
     }
