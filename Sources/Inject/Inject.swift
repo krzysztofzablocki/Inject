@@ -42,7 +42,12 @@ private var loadInjectionImplementation: Void = {
 #else
     let bundleName = "maciOSInjection.bundle"
 #endif // OS and environment conditions
-    Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName)?.load()
+
+    if let bundle = Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName) {
+        bundle.load()
+    } else {
+        assertionFailure("InjectionIII not found, verify if it's in /Applications")
+    }
 }()
 
 @available(iOS 13.0, *)
