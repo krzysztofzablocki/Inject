@@ -60,7 +60,16 @@ If anyone in your project wants to use injection, they only need to:
 
 - You must add "-Xlinker -interposable" (without the double quotes) to the "Other Linker Flags" of all targets in your project for the Debug configuration (qualified by the simulator SDK to avoid complications with bitcode), refer to [InjectionForXcode documentation](https://github.com/johnno1962/InjectionIII#limitationsfaq) if you run into any issues
 -  Download newest version of Xcode Injection from it's [GitHub Page](https://github.com/johnno1962/InjectionIII/releases)
-  - Unpack it and place under `/Applications`
+-  Add one of the following to your application delegate's applicationDidFinishLaunching:
+    ```swift
+    #if DEBUG
+    Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+    //for tvOS:
+    Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle")?.load()
+    //Or for macOS:
+    Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle")?.load()
+    #endif
+    ```
 - Make sure that the Xcode version you are using to compile our projects is under the default location: `/Applications/Xcode.app`
 - Run the injection application
 - Select open project / open recent from it's menu and pick the right workspace file you are using
