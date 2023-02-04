@@ -46,7 +46,7 @@ private var loadInjectionImplementation: Void = {
     if let bundle = Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName) {
         bundle.load()
     } else {
-        assertionFailure("InjectionIII not found, verify if it's in /Applications")
+        print("⚠️ Inject: InjectionIII not found, verify if it's in /Applications")
     }
 }()
 
