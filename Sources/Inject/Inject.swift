@@ -13,6 +13,7 @@ public protocol InjectListener {
 
 /// Public namespace for using Inject API
 public enum Inject {
+    public static var bundlePath = "/Applications/InjectionIII.app/Contents/Resources/"
     @available(iOS 13.0, *)
     public static let observer = injectionObserver
     public static let load: Void = loadInjectionImplementation
@@ -44,10 +45,11 @@ private var loadInjectionImplementation: Void = {
 #endif // OS and environment conditions
 
 #if targetEnvironment(simulator) || os(macOS)
-    if let bundle = Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/" + bundleName) {
+
+    if let bundle = Bundle(path: Inject.bundlePath + bundleName) {
         bundle.load()
     } else {
-        print("⚠️ Inject: InjectionIII not found, verify if it's in /Applications")
+        print("⚠️ Inject: InjectionIII bundle not found, verify if it's in \(Inject.bundlePath)")
     }
 #endif
 }()
