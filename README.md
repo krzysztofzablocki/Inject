@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/26660989/161756368-b150bc25-b66f-4822-
 
 [Read detailed article about this](https://merowing.info/2022/04/hot-reloading-in-swift/)
 
-The heavy lifting is done by the amazing [InjectionForXcode](https://github.com/johnno1962/InjectionIII). This library is just a thin wrapper to provide the best developer experience possible while requiring minimum effort. 
+The heavy lifting is done by the amazing [InjectionIII](https://github.com/johnno1962/InjectionIII). This library is just a thin wrapper to provide the best developer experience possible while requiring minimum effort. 
 
 I've been using it for years.
 
