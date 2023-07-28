@@ -44,7 +44,7 @@ private var loadInjectionImplementation: Void = {
     let bundleName = "maciOSInjection.bundle"
 #endif // OS and environment conditions
 
-#if targetEnvironment(simulator) || os(macOS)
+#if targetEnvironment(simulator) || os(macOS) || targetEnvironment(macCatalyst)
 
     if let bundle = Bundle(path: Inject.bundlePath + bundleName) {
         bundle.load()
