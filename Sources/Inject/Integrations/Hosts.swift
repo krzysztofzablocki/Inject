@@ -95,7 +95,7 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         fatalError("init(coder:) has not been implemented")
     }
     
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
     override open var childForStatusBarStyle: InjectViewControllerType? {
         instance
     }
