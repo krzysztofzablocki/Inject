@@ -58,7 +58,7 @@ pod 'InjectHotReload'
 ### Individual Developer setup (once per machine)
 If anyone in your project wants to use injection, they only need to:
 
-- You must add "-Xlinker -interposable" (without the double quotes) to the "Other Linker Flags" of all targets in your project for the Debug configuration (qualified by the simulator SDK to avoid complications with bitcode), refer to [InjectionForXcode documentation](https://github.com/johnno1962/InjectionIII#limitationsfaq) if you run into any issues
+- You must add "-Xlinker -interposable" (without the double quotes and on separate lines) to the "Other Linker Flags" of all targets in your project for the Debug configuration (qualified by the simulator SDK to avoid complications with bitcode), refer to [InjectionForXcode documentation](https://github.com/johnno1962/InjectionIII#limitationsfaq) if you run into any issues
 -  Download newest version of Xcode Injection from it's [GitHub Page](https://github.com/johnno1962/InjectionIII/releases)
   - Unpack it and place under `/Applications`
 - Make sure that the Xcode version you are using to compile our projects is under the default location: `/Applications/Xcode.app`
