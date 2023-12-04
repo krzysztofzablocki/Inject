@@ -1,6 +1,8 @@
 # Inject
 Hot reloading workflow helper that enables you to save hours of time each week, regardless if you are using `UIKit`, `AppKit` or `SwiftUI`.
 
+[**If you'd like to support my work and improve your engineering workflows, check out my SwiftyStack course**](https://www.swiftystack.com/)
+
 **TLDR: A single line of code** change allows you to live code `UIKit` screen:
 
 
