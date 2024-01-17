@@ -36,6 +36,8 @@ private var loadInjectionImplementation: Void = {
     let bundleName = "macOSInjection.bundle"
 #elseif os(tvOS)
     let bundleName = "tvOSInjection.bundle"
+#elseif os(xrOS)
+    let bundleName = "xrOSInjection.bundle"
 #elseif targetEnvironment(simulator)
     let bundleName = "iOSInjection.bundle"
 #elseif targetEnvironment(macCatalyst)
