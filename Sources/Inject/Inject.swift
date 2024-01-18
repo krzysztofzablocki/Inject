@@ -32,6 +32,16 @@ public extension InjectListener {
 #if DEBUG
 private var loadInjectionImplementation: Void = {
     guard objc_getClass("InjectionClient") == nil else { return }
+    // If project has a "Build Phase" running this script, Inject should
+    // work on a device (requires an InjectionIII github release 4.8.0+):
+    // /Applications/InjectionIII.app/Contents/Resources/copy_bundle.sh
+    if let path = Bundle.main.path(forResource:
+            "iOSInjection", ofType: "bundle") ??
+        Bundle.main.path(forResource:
+            "macOSInjection", ofType: "bundle"),
+        Bundle(path: path)?.load() == true {
+        return
+    }
 #if os(macOS)
     let bundleName = "macOSInjection.bundle"
 #elseif os(tvOS)
