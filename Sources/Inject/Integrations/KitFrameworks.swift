@@ -1,3 +1,4 @@
+#if !os(watchOS)
 #if canImport(UIKit)
 import Foundation
 import UIKit
@@ -11,4 +12,5 @@ import Foundation
 extension NSView: InjectListener {}
 extension NSViewController: InjectListener {}
 extension NSWindow: InjectListener {}
+#endif
 #endif
