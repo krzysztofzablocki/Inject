@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+#if !os(watchOS)
 #if DEBUG
 @available(iOS 13.0, *)
 public extension SwiftUI.View {
@@ -46,4 +47,5 @@ public struct ObserveInjection {
     public init() {}
     public private(set) var wrappedValue: Inject.Type = Inject.self
 }
+#endif
 #endif

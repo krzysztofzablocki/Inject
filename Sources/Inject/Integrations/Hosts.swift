@@ -1,3 +1,4 @@
+#if !os(watchOS)
 #if canImport(UIKit)
 import UIKit
 public typealias InjectViewControllerType = UIViewController
@@ -179,4 +180,5 @@ extension Inject {
     }
 }
 
+#endif
 #endif

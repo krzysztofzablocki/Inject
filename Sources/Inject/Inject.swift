@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import SwiftUI
 
+#if !os(watchOS)
 /// Common protocol interface for classes that support observing injection events
 /// This is automatically added to all NSObject subclasses like `ViewController`s or `Window`s
 public protocol InjectListener {
@@ -116,3 +117,4 @@ public extension InjectListener where Self: NSObject {
     func onInjection(callback: @escaping (Self) -> Void) {}
 }
 #endif // DEBUG
+#endif
