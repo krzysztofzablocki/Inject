@@ -22,7 +22,7 @@ public extension SwiftUI.View {
 }
 
 @available(iOS 13.0, *)
-@propertyWrapper
+@propertyWrapper @MainActor
 public struct ObserveInjection: DynamicProperty {
     @ObservedObject private var iO = Inject.observer
     public init() {}
@@ -42,8 +42,8 @@ public extension SwiftUI.View {
 }
 
 @available(iOS 13.0, *)
-@propertyWrapper
-public struct ObserveInjection {
+@propertyWrapper @MainActor
+public struct ObserveInjection: DynamicProperty {
     public init() {}
     public private(set) var wrappedValue: Inject.Type = Inject.self
 }
