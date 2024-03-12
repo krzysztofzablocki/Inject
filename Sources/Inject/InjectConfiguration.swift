@@ -13,7 +13,7 @@ public protocol InjectListener {
 }
 
 /// Public namespace for using Inject API
-public enum Inject {
+public enum InjectConfiguration {
     public static var bundlePath = "/Applications/InjectionIII.app/Contents/Resources/"
     @available(iOS 13.0, *)
     public static let observer = injectionObserver
@@ -26,7 +26,7 @@ public extension InjectListener {
     /// Ensures injection is enabled
     @inlinable @inline(__always)
     func enableInjection() {
-        _ = Inject.load
+        _ = InjectConfiguration.load
     }
 }
 
@@ -59,10 +59,10 @@ private var loadInjectionImplementation: Void = {
 
 #if targetEnvironment(simulator) || os(macOS) || targetEnvironment(macCatalyst)
 
-    if let bundle = Bundle(path: Inject.bundlePath + bundleName) {
+    if let bundle = Bundle(path: InjectConfiguration.bundlePath + bundleName) {
         bundle.load()
     } else {
-        print("⚠️ Inject: InjectionIII bundle not found, verify if it's in \(Inject.bundlePath)")
+        print("⚠️ Inject: InjectionIII bundle not found, verify if it's in \(InjectConfiguration.bundlePath)")
     }
 #endif
 }()
@@ -75,7 +75,7 @@ public class InjectionObserver: ObservableObject {
     fileprivate init() {
         cancellable = NotificationCenter.default.publisher(for: Notification.Name("INJECTION_BUNDLE_NOTIFICATION"))
             .sink { [weak self] _ in
-                if let animation = Inject.animation {
+                if let animation = InjectConfiguration.animation {
                     withAnimation(animation) {
                         self?.injectionNumber += 1
                     }

@@ -86,10 +86,10 @@ Just 2 steps to enable injection in your `SwiftUI` Views
 
 > *Remember you **don't need** to remove this code when you are done, it's NO-OP in production builds.*
 
-If you want to see your changes in action, you can enable an optional `Animation` variable on `Inject.animation` that will be used when ever new source code is injected into your application.
+If you want to see your changes in action, you can enable an optional `Animation` variable on `InjectConfiguration.animation` that will be used when ever new source code is injected into your application.
 
 ```swift
-Inject.animation = .interactiveSpring()
+InjectConfiguration.animation = .interactiveSpring()
 ```
 
 Using `Inject` is demoed in this [example app](https://github.com/MarcoEidinger/InjectSwiftUIExample) 
@@ -99,8 +99,8 @@ For standard imperative UI frameworks we need a way to clean-up state between co
 
 I create the concept of **Hosts** that work really well in that context, there are 2:
 
-- `Inject.ViewControllerHost`
-- `Inject.ViewHost`
+- `ViewControllerHost`
+- `ViewHost`
 
 How do we integrate this? We wrap the class we want to iterate on at the parent level, so we don’t modify the class we want to be injecting but we modify the parent callsite.
 

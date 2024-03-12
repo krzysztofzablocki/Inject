@@ -6,7 +6,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 public extension SwiftUI.View {
     func enableInjection() -> some SwiftUI.View {
-        _ = Inject.load
+        _ = InjectConfiguration.load
         
         // Use AnyView in case the underlying view structure changes during injection.
         // This is only in effect in debug builds.
@@ -14,7 +14,7 @@ public extension SwiftUI.View {
     }
 
     func onInjection(callback: @escaping (Self) -> Void) -> some SwiftUI.View {
-        onReceive(Inject.observer.objectWillChange, perform: {
+        onReceive(InjectConfiguration.observer.objectWillChange, perform: {
             callback(self)
         })
         .enableInjection()
@@ -24,9 +24,9 @@ public extension SwiftUI.View {
 @available(iOS 13.0, *)
 @propertyWrapper @MainActor
 public struct ObserveInjection: DynamicProperty {
-    @ObservedObject private var iO = Inject.observer
+    @ObservedObject private var iO = InjectConfiguration.observer
     public init() {}
-    public private(set) var wrappedValue: Inject.Type = Inject.self
+    public private(set) var wrappedValue: InjectConfiguration.Type = InjectConfiguration.self
 }
 
 #else
@@ -45,7 +45,7 @@ public extension SwiftUI.View {
 @propertyWrapper @MainActor
 public struct ObserveInjection: DynamicProperty {
     public init() {}
-    public private(set) var wrappedValue: Inject.Type = Inject.self
+    public private(set) var wrappedValue: InjectConfiguration.Type = InjectConfiguration.self
 }
 #endif
 #endif

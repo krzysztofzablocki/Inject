@@ -11,15 +11,13 @@ public typealias InjectViewType = NSView
 
 #if DEBUG
 
-extension Inject {
-    public typealias ViewControllerHost = _InjectableViewControllerHost
-    public typealias ViewHost = _InjectableViewHost
-}
+public typealias ViewControllerHost = _InjectableViewControllerHost
+public typealias ViewHost = _InjectableViewHost
 
 /// Usage: to create an autoreloading view controller, wrap your
-/// view controller that you wish to see changes within `Inject.ViewHost`. For example,
+/// view controller that you wish to see changes within `ViewHost`. For example,
 /// If you are using a `TestViewController`, you would do the following:
-/// `let myView = Inject.ViewControllerHost(TestViewController())`
+/// `let myView = ViewControllerHost(TestViewController())`
 /// And within the parent view, you should add the view above.
 @dynamicMemberLookup
 open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: InjectViewControllerType {
@@ -113,9 +111,9 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
 }
 
 /// Usage: to create an autoreloading view, wrap your
-/// view that you wish to see changes within `Inject.ViewHost`. For example,
+/// view that you wish to see changes within `ViewHost`. For example,
 /// If you are using a `TestView`, you would do the following:
-/// `let myView = Inject.ViewHost(TestView())`
+/// `let myView = ViewHost(TestView())`
 /// And within the parent view, you should add the view above.
 @dynamicMemberLookup
 public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
@@ -171,7 +169,7 @@ public class _InjectableViewHost<Hosted: InjectViewType>: InjectViewType {
 }
 #else
 
-extension Inject {
+extension InjectConfiguration {
     public static func ViewControllerHost<Hosted: InjectViewControllerType>(_ viewController: Hosted) -> Hosted {
         viewController
     }
