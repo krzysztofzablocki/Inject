@@ -89,7 +89,7 @@ Just 2 steps to enable injection in your `SwiftUI` Views
 If you want to see your changes in action, you can enable an optional `Animation` variable on `InjectConfiguration.animation` that will be used when ever new source code is injected into your application.
 
 ```swift
-InjectConfiguration.animation = .interactiveSpring()
+Inject.animation = .interactiveSpring()
 ```
 
 Using `Inject` is demoed in this [example app](https://github.com/MarcoEidinger/InjectSwiftUIExample) 
