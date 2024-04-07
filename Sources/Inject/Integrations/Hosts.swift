@@ -23,7 +23,16 @@ public typealias ViewHost = _InjectableViewHost
 open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: InjectViewControllerType {
     public private(set) var instance: Hosted
     let constructor: () -> Hosted
-    public var afterInjectionHook: (() -> Void)?
+    /// Attaches a hook to be executed each time after a controller is reloaded.
+    ///
+    /// Usage:
+    /// ```swift
+    /// let myView = ViewControllerHost(TestViewController())
+    /// myView.onInjectionHook = { presenter in
+    ///     presenter.ui = (myView as? ViewControllerHost<TestViewController>)?.instance
+    /// }
+    /// ```
+    public var onInjectionHook: (() -> Void)?
     
     public init(_ constructor: @autoclosure @escaping () -> Hosted) {
         instance = constructor()
@@ -35,7 +44,7 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         addAsChild()
         onInjection { [weak self] instance in
             instance.resetHosted()
-            self?.afterInjectionHook?()
+            self?.onInjectionHook?()
         }
     }
     
