@@ -23,6 +23,7 @@ public typealias ViewHost = _InjectableViewHost
 open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: InjectViewControllerType {
     public private(set) var instance: Hosted
     let constructor: () -> Hosted
+    public var afterInjectionHook: (() -> Void)?
     
     public init(_ constructor: @autoclosure @escaping () -> Hosted) {
         instance = constructor()
@@ -32,8 +33,9 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         self.enableInjection()
         
         addAsChild()
-        onInjection { instance in
+        onInjection { [weak self] instance in
             instance.resetHosted()
+            self?.afterInjectionHook?()
         }
     }
     
