@@ -28,11 +28,11 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
     /// Usage:
     /// ```swift
     /// let myView = ViewControllerHost(TestViewController())
-    /// myView.onInjectionHook = { presenter in
-    ///     presenter.ui = (myView as? ViewControllerHost<TestViewController>)?.instance
+    /// myView.onInjectionHook = { hostedViewController in
+    ///     presenter.ui = hostedViewController
     /// }
     /// ```
-    public var onInjectionHook: (() -> Void)?
+    public var onInjectionHook: ((Hosted) -> Void)?
     
     public init(_ constructor: @autoclosure @escaping () -> Hosted) {
         instance = constructor()
@@ -43,8 +43,9 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
         
         addAsChild()
         onInjection { [weak self] instance in
+            guard let self else { return }
             instance.resetHosted()
-            self?.onInjectionHook?()
+            self.onInjectionHook?(self.instance)
         }
     }
     
