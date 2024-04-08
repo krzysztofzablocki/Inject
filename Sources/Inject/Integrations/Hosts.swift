@@ -29,6 +29,8 @@ open class _InjectableViewControllerHost<Hosted: InjectViewControllerType>: Inje
     /// ```swift
     /// let myView = ViewControllerHost(TestViewController())
     /// myView.onInjectionHook = { hostedViewController in
+    /// //any thing here will be executed each time the controller is reloaded
+    /// // for example, you might want to re-assign the controller to your presenter
     ///     presenter.ui = hostedViewController
     /// }
     /// ```
