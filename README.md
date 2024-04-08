@@ -134,10 +134,11 @@ Eg. you might want to bind the `UIViewController` to the presenter each-time the
    Example:
 
 ```swift
-let myView = ViewControllerHost(TestViewController())
-myView.onInjectionHook = { presenter in
-// each time there's a reload, this cloused will be executed
-presenter.ui = (myView as? ViewControllerHost<TestViewController>)?.instance 
+myView.onInjectionHook = { hostedViewController in
+//any thing here will be executed each time the controller is reloaded
+// for example, you might want to re-assign the controller to your presenter
+presenter.ui = hostedViewController
+}
 ```
 
 #### iOS 12
