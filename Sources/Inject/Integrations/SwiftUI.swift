@@ -26,7 +26,8 @@ public extension SwiftUI.View {
 public struct ObserveInjection: DynamicProperty {
     @ObservedObject private var iO = InjectConfiguration.observer
     public init() {}
-    public private(set) var wrappedValue: InjectConfiguration.Type = InjectConfiguration.self
+    // Use a computed property rather than directly storing the value to work around https://github.com/swiftlang/swift/issues/62003
+    public var wrappedValue: InjectConfiguration.Type { InjectConfiguration.self }
 }
 
 #else
@@ -45,7 +46,8 @@ public extension SwiftUI.View {
 @propertyWrapper @MainActor
 public struct ObserveInjection: DynamicProperty {
     public init() {}
-    public private(set) var wrappedValue: InjectConfiguration.Type = InjectConfiguration.self
+    // Use a computed property rather than directly storing the value to work around https://github.com/swiftlang/swift/issues/62003
+    public var wrappedValue: InjectConfiguration.Type { InjectConfiguration.self }
 }
 #endif
 #endif
