@@ -146,4 +146,4 @@ You need to add -weak_framework SwiftUI to Other Linker Flags for iOS 12 to work
 
 #### The Composable Architecture
 
-If like myself you love [PointFree](https://pointfree.co/) Composable Architecture, you’d probably want to inject reducer code, this isn’t possible in vanilla TCA because reducer code is a free function which isn’t as straightforward to replace with injection, but [our fork](https://github.com/thebrowsercompany/swift-composable-architecture) at [The Browser Company](https://thebrowser.company/) supports it.
+Since the introduction of ReducerProtocol you can use Inject with TCA without support code.
