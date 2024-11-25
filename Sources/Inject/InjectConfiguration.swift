@@ -73,6 +73,7 @@ public class InjectionObserver: ObservableObject {
     private var cancellable: AnyCancellable?
 
     fileprivate init() {
+        _ = loadInjectionImplementation
         cancellable = NotificationCenter.default.publisher(for: Notification.Name("INJECTION_BUNDLE_NOTIFICATION"))
             .sink { [weak self] _ in
                 if let animation = InjectConfiguration.animation {
