@@ -58,12 +58,15 @@ private var loadInjectionImplementation: Void = {
 #endif // OS and environment conditions
 
 #if targetEnvironment(simulator) || os(macOS) || targetEnvironment(macCatalyst)
-
-    if let bundle = Bundle(path: InjectConfiguration.bundlePath + bundleName) {
-        bundle.load()
-    } else {
-        print("⚠️ Inject: InjectionIII bundle not found, verify if it's in \(InjectConfiguration.bundlePath)")
+    for which in ["III", "Next"] {
+        let bundlePath = InjectConfiguration.bundlePath
+            .replacingOccurrences(of: "III", with: which) + bundleName
+        if let bundle = Bundle(path: bundlePath), bundle.load() {
+            return
+        }
     }
+
+    print("⚠️ Inject: InjectionIII bundle not found, verify if it's in \(InjectConfiguration.bundlePath)")
 #endif
 }()
 
