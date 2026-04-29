@@ -5,7 +5,7 @@ import SwiftUI
 #if !os(watchOS)
 /// Common protocol interface for classes that support observing injection events
 /// This is automatically added to all NSObject subclasses like `ViewController`s or `Window`s
-public protocol InjectListener {
+@MainActor public protocol InjectListener {
     associatedtype InjectInstanceType = Self
 
     func enableInjection()
@@ -13,7 +13,7 @@ public protocol InjectListener {
 }
 
 /// Public namespace for using Inject API
-public enum InjectConfiguration {
+@MainActor public enum InjectConfiguration {
     public static var bundlePath = "/Applications/InjectionIII.app/Contents/Resources/"
     @available(iOS 13.0, *)
     public static let observer = injectionObserver
@@ -22,7 +22,7 @@ public enum InjectConfiguration {
     public static var animation: SwiftUI.Animation?
 }
 
-public extension InjectListener {
+@MainActor public extension InjectListener {
     /// Ensures injection is enabled
     @inlinable @inline(__always)
     func enableInjection() {
@@ -31,7 +31,7 @@ public extension InjectListener {
 }
 
 #if DEBUG
-private var loadInjectionImplementation: Void = {
+@MainActor private var loadInjectionImplementation: Void = {
     guard objc_getClass("InjectionClient") == nil else { return }
     // If project has a "Build Phase" running this script, Inject should
     // work on a device (requires an InjectionIII github release 4.8.0+):
@@ -71,7 +71,7 @@ private var loadInjectionImplementation: Void = {
 }()
 
 @available(iOS 13.0, *)
-public class InjectionObserver: ObservableObject {
+@MainActor public class InjectionObserver: ObservableObject {
     @Published public private(set) var injectionNumber = 0
     private var cancellable: AnyCancellable?
 
@@ -91,11 +91,11 @@ public class InjectionObserver: ObservableObject {
 }
 
 @available(iOS 13.0, *)
-private let injectionObserver = InjectionObserver()
+@MainActor private let injectionObserver = InjectionObserver()
 @available(iOS 13.0, *)
-private var injectionObservationKey = arc4random()
+@MainActor private var injectionObservationKey = arc4random()
 
-public extension InjectListener where Self: NSObject {
+@MainActor public extension InjectListener where Self: NSObject {
     func onInjection(callback: @escaping (Self) -> Void) {
         guard #available(iOS 13.0, *) else {
             return
@@ -111,12 +111,12 @@ public extension InjectListener where Self: NSObject {
 
 #else
 @available(iOS 13.0, *)
-public class InjectionObserver: ObservableObject {}
+@MainActor public class InjectionObserver: ObservableObject {}
 @available(iOS 13.0, *)
-private let injectionObserver = InjectionObserver()
-private var loadInjectionImplementation: Void = {}()
+@MainActor private let injectionObserver = InjectionObserver()
+@MainActor private var loadInjectionImplementation: Void = {}()
 
-public extension InjectListener where Self: NSObject {
+@MainActor public extension InjectListener where Self: NSObject {
     @inlinable @inline(__always)
     func onInjection(callback: @escaping (Self) -> Void) {}
 }
